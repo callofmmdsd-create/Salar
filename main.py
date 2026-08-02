@@ -440,7 +440,16 @@ def main():
     if not BOT_TOKEN:
         raise SystemExit("TELEGRAM_BOT_TOKEN environment variable is not set.")
 
-    app = Application.builder().token(BOT_TOKEN).post_shutdown(on_shutdown).build()
+    app = (
+        Application.builder()
+        .token(BOT_TOKEN)
+        .connect_timeout(30)
+        .read_timeout(30)
+        .write_timeout(30)
+        .pool_timeout(30)
+        .post_shutdown(on_shutdown)
+        .build()
+    )
 
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("mode", set_mode))
