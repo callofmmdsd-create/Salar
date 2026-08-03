@@ -1,11 +1,4 @@
-# NOTE for Termux/Android: plain `pip install -r requirements.txt` will try to
-# pull ccxt's aiohttp-based async extras and fail (needs Rust/C compilation).
-# On Termux, install like this instead:
-#   pkg install python-numpy python-scipy python-cryptography -y
-#   pip install python-telegram-bot==21.4
-#   pip install ccxt --no-deps
-#   pip install requests certifi setuptools
 python-telegram-bot==21.4
 ccxt>=4.5.30
-numpy==1.26.4
-scipy==1.13.1
+numpy>=1.26,<3
+scipy>=1.11,<2
